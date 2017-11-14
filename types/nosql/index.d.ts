@@ -2,18 +2,18 @@
 // Project: https://github.com/petersirka/nosql
 // Definitions by: Benjamin Jesuiter https://github.com/bjesuiter
 // Definitions: https://github.com/DefinitelyTyped/DefinitelyTyped
-// import { DatabaseBinary } from './database-binary';
-// import { DatabaseCounter } from './database-counter';
+import { DatabaseBinary } from './database-binary';
 import { DatabaseBuilder } from './database-builder';
+import { DatabaseCounter } from './database-counter';
 
 declare module 'nosql' {
 
     //TODO: type more strictly to Error and Stats
     type BackupCallback = (err: any, stats?: any) => void;
 
-     class Database {
-        // binary: DatabaseBinary;
-        // counter: DatabaseCounter;
+    class Database {
+        binary: DatabaseBinary;
+        counter: DatabaseCounter;
 
         /**
          * CHANGELOG: +v2.8.0 changed this method completely,
@@ -164,40 +164,40 @@ declare module 'nosql' {
          */
         view(viewname: string): DatabaseBuilder;
 
-         //Events
-         //-------
+        //Events
+        //-------
 
-         /**
-          * Is triggered if a document is inserted into the database.
-          * @param {"insert"} event
-          * @param {(doc: any) => void} listener - A document as parameter.
-          * @return {this}
-          */
-         on(event: 'insert', listener: (doc: any) => void): Database;
+        /**
+         * Is triggered if a document is inserted into the database.
+         * @param {"insert"} event
+         * @param {(doc: any) => void} listener - A document as parameter.
+         * @return {this}
+         */
+        on(event: 'insert', listener: (doc: any) => void): Database;
 
-         /**
-          * Is triggered if a document is modified in the database.
-          * @param {"modify"} event
-          * @param {(doc: any) => void} listener - A document as parameter.
-          * @return {this}
-          */
-         on(event: 'modify', listener: (doc: any) => void): Database;
+        /**
+         * Is triggered if a document is modified in the database.
+         * @param {"modify"} event
+         * @param {(doc: any) => void} listener - A document as parameter.
+         * @return {this}
+         */
+        on(event: 'modify', listener: (doc: any) => void): Database;
 
-         /**
-          * Is triggered if a document is updated in the database.
-          * @param {"update"} event
-          * @param {(doc: any) => void} listener - A document as parameter.
-          * @return {this}
-          */
-         on(event: 'update', listener: (doc: any) => void): Database;
+        /**
+         * Is triggered if a document is updated in the database.
+         * @param {"update"} event
+         * @param {(doc: any) => void} listener - A document as parameter.
+         * @return {this}
+         */
+        on(event: 'update', listener: (doc: any) => void): Database;
 
-         /**
-          * Is triggered if a document is removed from the database.
-          * @param {"delete"} event
-          * @param {(doc: any) => void} listener - A document as parameter.
-          * @return {this}
-          */
-         on(event: 'delete', listener: (doc: any) => void): this;
+        /**
+         * Is triggered if a document is removed from the database.
+         * @param {"delete"} event
+         * @param {(doc: any) => void} listener - A document as parameter.
+         * @return {this}
+         */
+        on(event: 'delete', listener: (doc: any) => void): this;
 
     }
 
